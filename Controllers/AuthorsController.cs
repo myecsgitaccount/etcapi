@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EtcLibrary.API.Helpers;
 using EtcLibrary.API.Models;
 using EtcLibrary.API.Services;
@@ -16,33 +17,21 @@ namespace EtcLibrary.API.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly ICourseLibraryRepository _courseLibraryRepository;
+        private readonly IMapper _mapper;
 
-        
-        public AuthorsController(ICourseLibraryRepository courseLibraryRepository)
+        public AuthorsController(ICourseLibraryRepository courseLibraryRepository, IMapper mapper)
         {
             _courseLibraryRepository = courseLibraryRepository ??
-                throw new ArgumentNullException(nameof(courseLibraryRepository)); 
+                throw new ArgumentNullException(nameof(courseLibraryRepository));
+
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)); ;
         }
 
         
         public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
-            var authorsFromRepo = _courseLibraryRepository.GetAuthors();
-            //return new JsonResult(authorsFromRepo); 
-            var authors = new List<AuthorDto>();
-
-            foreach (var author in authorsFromRepo)
-            {
-                authors.Add(new AuthorDto()
-                {
-                    Id = author.Id,
-                    Name = $"{author.FirstName} {author.LastName}",
-                    MainCategory = author.MainCategory,
-                    Age = author.DateOfBirth.GetCurrentAge()
-                }); 
-            }
-            //return Ok(authorsFromRepo);
-            return Ok(authors);
+            var authorsFromRepo = _courseLibraryRepository.GetAuthors();                 
+            return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo));
         }
 
         [HttpGet("{authorId}")]

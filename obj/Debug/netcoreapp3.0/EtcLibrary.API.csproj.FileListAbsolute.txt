@@ -118,4 +118,6 @@ C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\ru\Microsoft.CodeAn
 C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\AutoMapper.dll
+C:\NETCORE\EtcLibrary\EtcLibrary.API\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\NETCORE\EtcLibrary\EtcLibrary.API\obj\Debug\netcoreapp3.0\EtcLibrary.API.MvcApplicationPartsAssemblyInfo.cache

@@ -1,3 +1,4 @@
+using AutoMapper;
 using EtcLibrary.API.DbContexts;
 using EtcLibrary.API.Services;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace EtcLibrary.API
 {
@@ -21,11 +23,15 @@ namespace EtcLibrary.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(setupAction =>
-            {
-                setupAction.ReturnHttpNotAcceptable = true;
+            services.AddControllers();
 
-            }).AddXmlDataContractSerializerFormatters();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
+
+            //services.AddControllers(setupAction =>
+            //{
+            //    setupAction.ReturnHttpNotAcceptable = true;
+
+            //}).AddXmlDataContractSerializerFormatters();
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
